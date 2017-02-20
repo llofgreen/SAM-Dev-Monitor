@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>SAM Monitor</ProductName>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>HcLogoWithBackground.ico</ApplicationIcon>
+    <ApplicationIcon>HcLogoGrey.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>A54BBE16E7BC1AC5DFA20A31A7FD4E967EF94975</ManifestCertificateThumbprint>
@@ -155,6 +155,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HcLogoGrey.ico" />
     <Content Include="HcLogoWithBackground.ico" />
     <None Include="Resources\HcLogoWithBackground.ico" />
   </ItemGroup>
