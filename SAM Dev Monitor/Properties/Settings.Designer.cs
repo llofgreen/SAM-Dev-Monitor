@@ -118,5 +118,17 @@ namespace SAM_Dev_Monitor.Properties {
                 this["SAMHistoryRows"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public double UsageMinutes {
+            get {
+                return ((double)(this["UsageMinutes"]));
+            }
+            set {
+                this["UsageMinutes"] = value;
+            }
+        }
     }
 }

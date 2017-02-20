@@ -45,14 +45,18 @@
             this.txtSlackName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ckNoActivity = new System.Windows.Forms.CheckBox();
+            this.nudUsage = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimerInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLookBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUsage)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(16, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 0;
@@ -60,7 +64,7 @@
             // 
             // nudTimerInterval
             // 
-            this.nudTimerInterval.Location = new System.Drawing.Point(106, 11);
+            this.nudTimerInterval.Location = new System.Drawing.Point(135, 11);
             this.nudTimerInterval.Maximum = new decimal(new int[] {
             120,
             0,
@@ -84,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(190, 13);
+            this.label2.Location = new System.Drawing.Point(219, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 0;
@@ -101,14 +105,14 @@
             // 
             // txtEDWInstance
             // 
-            this.txtEDWInstance.Location = new System.Drawing.Point(106, 64);
+            this.txtEDWInstance.Location = new System.Drawing.Point(135, 64);
             this.txtEDWInstance.Name = "txtEDWInstance";
             this.txtEDWInstance.Size = new System.Drawing.Size(292, 20);
             this.txtEDWInstance.TabIndex = 4;
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(281, 170);
+            this.btCancel.Location = new System.Drawing.Point(310, 197);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(117, 23);
             this.btCancel.TabIndex = 5;
@@ -118,7 +122,7 @@
             // 
             // nudLookBack
             // 
-            this.nudLookBack.Location = new System.Drawing.Point(106, 37);
+            this.nudLookBack.Location = new System.Drawing.Point(135, 37);
             this.nudLookBack.Maximum = new decimal(new int[] {
             1440,
             0,
@@ -142,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(190, 39);
+            this.label4.Location = new System.Drawing.Point(219, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 6;
@@ -151,15 +155,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 39);
+            this.label5.Location = new System.Drawing.Point(16, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.Size = new System.Drawing.Size(99, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Look Back:";
+            this.label5.Text = "Activity Look Back:";
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(106, 170);
+            this.btSave.Location = new System.Drawing.Point(135, 197);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(117, 23);
             this.btSave.TabIndex = 9;
@@ -170,7 +174,7 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(106, 90);
+            this.txtUserName.Location = new System.Drawing.Point(135, 90);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
             this.txtUserName.Size = new System.Drawing.Size(292, 20);
@@ -190,7 +194,7 @@
             // txtSlackName
             // 
             this.txtSlackName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSlackName.Location = new System.Drawing.Point(106, 116);
+            this.txtSlackName.Location = new System.Drawing.Point(135, 116);
             this.txtSlackName.Name = "txtSlackName";
             this.txtSlackName.ReadOnly = true;
             this.txtSlackName.Size = new System.Drawing.Size(292, 20);
@@ -210,18 +214,62 @@
             // ckNoActivity
             // 
             this.ckNoActivity.AutoSize = true;
-            this.ckNoActivity.Location = new System.Drawing.Point(106, 143);
+            this.ckNoActivity.Location = new System.Drawing.Point(135, 143);
             this.ckNoActivity.Name = "ckNoActivity";
             this.ckNoActivity.Size = new System.Drawing.Size(186, 17);
             this.ckNoActivity.TabIndex = 14;
             this.ckNoActivity.Text = "Receive \"No Activity\" Notification";
             this.ckNoActivity.UseVisualStyleBackColor = true;
             // 
+            // nudUsage
+            // 
+            this.nudUsage.Location = new System.Drawing.Point(135, 164);
+            this.nudUsage.Maximum = new decimal(new int[] {
+            1440,
+            0,
+            0,
+            0});
+            this.nudUsage.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudUsage.Name = "nudUsage";
+            this.nudUsage.Size = new System.Drawing.Size(78, 20);
+            this.nudUsage.TabIndex = 17;
+            this.nudUsage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudUsage.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(219, 166);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "minutes";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 166);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Usage Look Back:";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 205);
+            this.ClientSize = new System.Drawing.Size(465, 230);
+            this.Controls.Add(this.nudUsage);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.ckNoActivity);
             this.Controls.Add(this.txtSlackName);
             this.Controls.Add(this.label7);
@@ -242,6 +290,7 @@
             this.Text = "Options";
             ((System.ComponentModel.ISupportInitialize)(this.nudTimerInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLookBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUsage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +314,8 @@
         private System.Windows.Forms.TextBox txtSlackName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox ckNoActivity;
+        private System.Windows.Forms.NumericUpDown nudUsage;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -21,6 +21,7 @@ namespace SAM_Dev_Monitor
 
         public DataTable AuditLog;
         public DataTable ExecutionLog;
+        public DataTable SAMUsageLog;
 
         public EDWAdmin()
         {
@@ -30,8 +31,75 @@ namespace SAM_Dev_Monitor
             this.SlackInit();
             this.ExecutionLog = new DataTable();
             this.AuditLog = new DataTable();
+            this.SAMUsageLog = new DataTable();
         }
 
+        public string GetEpicUserName()
+        {
+            string retVal = Environment.UserName;
+
+            string SQL = "SELECT Name FROM Epic.Reference.EmployeeBASE " +
+                " WHERE UserID = '" + Environment.UserName + "'";
+            using (SqlConnection con = new SqlConnection(_devConnectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, con))
+                {
+                    using(SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            retVal = rdr.GetString(0);
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        public void RecordSAMUsage(string SAMNM, string samdConnection)
+        {
+            string SQL = "INSERT INTO JobCop.SAMUsageBASE(SAMNM,ConnectionNM,UserNM,MessageCD,RecordedDTS)VALUES('" +
+                SAMNM + "','" + samdConnection + "','" + this.GetEpicUserName() + "','OPEN',GETDATE())";
+            using (SqlConnection con = new SqlConnection(_devConnectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int GetSAMUsage()
+        {
+            double UsageMinutes = Properties.Settings.Default.UsageMinutes;
+
+            DateTime CheckTime = DateTime.Now.AddMinutes(-UsageMinutes);
+
+            string SQL = "SELECT s.SAMNM, s.ConnectionNM, s.UserNM, MAX(s.RecordedDTS) AS RecordedDTS " +
+                " FROM EDWAdmin.JobCop.SAMUsageBASE AS s" +
+                " WHERE s.MessageCD = 'OPEN'" +
+                " AND s.RecordedDTS > '" + CheckTime.ToString("yyyy-MM-dd") + " " + CheckTime.ToString("HH:mm") + "' " +
+                " GROUP BY s.SAMNM, s.ConnectionNM, s.UserNM" +
+                " ORDER BY s.SAMNM, s.ConnectionNM, s.UserNM";
+
+            using (SqlConnection con = new SqlConnection(_devConnectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, con))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(this.SAMUsageLog);
+                    }
+                }
+            }
+
+            return this.SAMUsageLog.Rows.Count;
+
+        }
         public void SlackInit()
         {
             // Get integration URI
@@ -232,6 +300,7 @@ namespace SAM_Dev_Monitor
             {
                 AuditLog.Dispose();
                 ExecutionLog.Dispose();
+                SAMUsageLog.Dispose();
             }
 
             disposed = true;

@@ -50,6 +50,11 @@
             this.tssTimerEnabledLink = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssSlackEnabledLink = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.test01ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmrSAMUsage = new System.Windows.Forms.Timer(this.components);
+            this.tssSAMProcesses = new System.Windows.Forms.ToolStripStatusLabel();
+            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -103,7 +108,8 @@
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
             this.selectSAMsToolStripMenuItem,
-            this.singleSAMHistoryToolStripMenuItem});
+            this.singleSAMHistoryToolStripMenuItem,
+            this.usageToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(44, 20);
             this.toolsMenu.Text = "&Tools";
@@ -143,43 +149,46 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileVerticalToolStripMenuItem.Text = "Tile &Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileHorizontalToolStripMenuItem.Text = "Tile &Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeAllToolStripMenuItem.Text = "C&lose All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test01ToolStripMenuItem,
+            this.test02ToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssTimerEnabledLink,
-            this.tssSlackEnabledLink});
+            this.tssSlackEnabledLink,
+            this.tssSAMProcesses});
             this.statusStrip.Location = new System.Drawing.Point(0, 558);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1069, 22);
@@ -205,6 +214,38 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // test01ToolStripMenuItem
+            // 
+            this.test01ToolStripMenuItem.Name = "test01ToolStripMenuItem";
+            this.test01ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test01ToolStripMenuItem.Text = "Test 01";
+            this.test01ToolStripMenuItem.Click += new System.EventHandler(this.test01ToolStripMenuItem_Click);
+            // 
+            // test02ToolStripMenuItem
+            // 
+            this.test02ToolStripMenuItem.Name = "test02ToolStripMenuItem";
+            this.test02ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test02ToolStripMenuItem.Text = "Test 02";
+            this.test02ToolStripMenuItem.Click += new System.EventHandler(this.test02ToolStripMenuItem_Click);
+            // 
+            // tmrSAMUsage
+            // 
+            this.tmrSAMUsage.Enabled = true;
+            this.tmrSAMUsage.Interval = 300000;
+            this.tmrSAMUsage.Tick += new System.EventHandler(this.tmrSAMUsage_Tick);
+            // 
+            // tssSAMProcesses
+            // 
+            this.tssSAMProcesses.Name = "tssSAMProcesses";
+            this.tssSAMProcesses.Size = new System.Drawing.Size(0, 17);
+            // 
+            // usageToolStripMenuItem
+            // 
+            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
+            this.usageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.usageToolStripMenuItem.Text = "&Usage";
+            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -249,6 +290,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem singleSAMHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test01ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test02ToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrSAMUsage;
+        private System.Windows.Forms.ToolStripStatusLabel tssSAMProcesses;
+        private System.Windows.Forms.ToolStripMenuItem usageToolStripMenuItem;
     }
 }
 

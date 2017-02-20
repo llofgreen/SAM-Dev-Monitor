@@ -19,6 +19,7 @@ namespace SAM_Dev_Monitor
             this.nudLookBack.Value = (Decimal)Properties.Settings.Default.LookBackMinutes;
             this.txtEDWInstance.Text = Properties.Settings.Default.EDWInstance;
             this.txtUserName.Text = Environment.UserName;
+            this.nudUsage.Value = (Decimal)Properties.Settings.Default.UsageMinutes;
             EDWAdmin edw = new EDWAdmin();
             this.txtSlackName.Text = edw.slackUserName;
             this.ckNoActivity.Checked = Properties.Settings.Default.NoActivityNotification;
@@ -43,7 +44,8 @@ namespace SAM_Dev_Monitor
             Properties.Settings.Default.LookBackMinutes = (double)this.nudLookBack.Value;
             Properties.Settings.Default.EDWInstance = this.txtEDWInstance.Text;
             Properties.Settings.Default.NoActivityNotification = this.ckNoActivity.Checked;
-                
+            Properties.Settings.Default.UsageMinutes = (double)this.nudUsage.Value;
+
             Properties.Settings.Default.Save();
 
             this.Close();
