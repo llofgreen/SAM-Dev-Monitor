@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>SAM Monitor</ProductName>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -94,6 +94,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="RTB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RTB.Designer.cs">
+      <DependentUpon>RTB.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectSAMs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RTB.resx">
+      <DependentUpon>RTB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectSAMs.resx">
       <DependentUpon>SelectSAMs.cs</DependentUpon>

@@ -16,14 +16,11 @@ namespace SAM_Dev_Monitor
         private int childFormNumber = 0;
         private bool timerEnabled;
         private EDWAdmin edw;
-        private bool inTimer1;
-        private bool inTimer2;
-
+        
         public Main()
         {
             InitializeComponent();
-            inTimer1 = false;
-            inTimer2 = false;
+            
             timerEnabled = false;
             this.timer1.Enabled = false;
             edw = new EDWAdmin();
@@ -31,6 +28,9 @@ namespace SAM_Dev_Monitor
             this.SetStatus();
             this.SetTimer();
             this.testToolStripMenuItem.Visible = (Environment.UserName == "s0173317");
+            Version temp = new Version(1, 0, 0, 21);
+            this.Text = "SAM Monitor v" + temp.ToString();
+            this.tmrSAMUsage.Enabled = true;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -192,6 +192,8 @@ namespace SAM_Dev_Monitor
                 if (slackNotification)
                 {
                     string message = "";
+                    string lastMessage = "";
+                    string newMessage = "";
                     for(int i = 0; i < edw.AuditLog.Rows.Count; i++)
                     {
                         DataRow d = edw.AuditLog.Rows[i];
@@ -199,8 +201,13 @@ namespace SAM_Dev_Monitor
                         string ObjectNM = d[1].ToString();
                         string UpdatedByNM = d[2].ToString();
                         string ChangedDSC = d[3].ToString();
-                        
-                        message = message + ObjectNM + " updated by " + UpdatedByNM + " at " + ChangedDSC + "\n";
+
+                        newMessage = ObjectNM + " updated by " + UpdatedByNM + " at " + ChangedDSC;
+                        if(newMessage != lastMessage)
+                        {
+                            lastMessage = newMessage;
+                            message = message + newMessage + "\n";
+                        }
                         
                     }
                     SlackIntegration si = new SlackIntegration();
@@ -268,26 +275,15 @@ namespace SAM_Dev_Monitor
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (inTimer2) return;
-            this.tmrSAMUsage.Enabled = false;
-            this.refreshToolStripMenuItem.Enabled = false;
-            inTimer1 = true;
             ProcessTick(false);
-            inTimer1 = false;
-            this.refreshToolStripMenuItem.Enabled = true;
-            this.tmrSAMUsage.Enabled = true;
+            
 
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (inTimer1 || inTimer2) return;
-
-            this.timer1.Enabled = false;
-            this.tmrSAMUsage.Enabled = false;
             this.ProcessTick(true);
-            this.tmrSAMUsage.Enabled = true;
-            this.timer1.Enabled = this.timerEnabled;
+            
         }
 
         private void tssTimerEnabledLink_Click(object sender, EventArgs e)
@@ -332,30 +328,8 @@ namespace SAM_Dev_Monitor
 
         private void test02ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GetSAMProcesses();
-            return;
-            
-            Process[] processlist = Process.GetProcesses();
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Title");
-            foreach (Process p in processlist)
-            {
-                if (!String.IsNullOrEmpty(p.MainWindowTitle))
-                {
-                    DataRow dr = dt.NewRow();
-                    dr["Name"] = p.ProcessName;
-                    dr["Title"] = p.MainWindowTitle;
-                    dt.Rows.Add(dr);
-                }
-            }
-
-            frmData m = new frmData();
-            m.Text = "Processes";
-            m.MdiParent = this;
-            m.SetData(dt);
-            m.Show();
+            RTB frm = new RTB();
+            frm.ShowDialog();
         }
 
         public void GetSAMProcesses()
@@ -408,14 +382,9 @@ namespace SAM_Dev_Monitor
 
         private void tmrSAMUsage_Tick(object sender, EventArgs e)
         {
-            if (inTimer1) return;
-            this.timer1.Enabled = false;
-            this.refreshToolStripMenuItem.Enabled = false;
-            inTimer2 = true;
-            GetSAMProcesses();
-            inTimer2 = false;
-            this.refreshToolStripMenuItem.Enabled = true;
-            this.timer1.Enabled = this.timerEnabled;
+            //GetSAMProcesses();
+            return;
+            
         }
 
         private void tssUsageMinutes_Click(object sender, EventArgs e)

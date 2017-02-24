@@ -40,21 +40,21 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectSAMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.singleSAMHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test01ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tssTimerEnabledLink = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssSlackEnabledLink = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.test01ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.test02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmrSAMUsage = new System.Windows.Forms.Timer(this.components);
             this.tssSAMProcesses = new System.Windows.Forms.ToolStripStatusLabel();
-            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tmrSAMUsage = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +135,14 @@
             this.singleSAMHistoryToolStripMenuItem.Text = "Single SAM &History";
             this.singleSAMHistoryToolStripMenuItem.Click += new System.EventHandler(this.singleSAMHistoryToolStripMenuItem_Click);
             // 
+            // usageToolStripMenuItem
+            // 
+            this.usageToolStripMenuItem.Enabled = false;
+            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
+            this.usageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.usageToolStripMenuItem.Text = "&Usage";
+            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
+            // 
             // windowsMenu
             // 
             this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -149,28 +157,28 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.tileVerticalToolStripMenuItem.Text = "Tile &Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.tileHorizontalToolStripMenuItem.Text = "Tile &Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.closeAllToolStripMenuItem.Text = "C&lose All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
@@ -182,6 +190,20 @@
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.testToolStripMenuItem.Text = "Test";
+            // 
+            // test01ToolStripMenuItem
+            // 
+            this.test01ToolStripMenuItem.Name = "test01ToolStripMenuItem";
+            this.test01ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test01ToolStripMenuItem.Text = "Test 01";
+            this.test01ToolStripMenuItem.Click += new System.EventHandler(this.test01ToolStripMenuItem_Click);
+            // 
+            // test02ToolStripMenuItem
+            // 
+            this.test02ToolStripMenuItem.Name = "test02ToolStripMenuItem";
+            this.test02ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test02ToolStripMenuItem.Text = "RTB";
+            this.test02ToolStripMenuItem.Click += new System.EventHandler(this.test02ToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -211,41 +233,19 @@
             this.tssSlackEnabledLink.Text = "Slack Enabled";
             this.tssSlackEnabledLink.Click += new System.EventHandler(this.tssSlackEnabledLink_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // test01ToolStripMenuItem
-            // 
-            this.test01ToolStripMenuItem.Name = "test01ToolStripMenuItem";
-            this.test01ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.test01ToolStripMenuItem.Text = "Test 01";
-            this.test01ToolStripMenuItem.Click += new System.EventHandler(this.test01ToolStripMenuItem_Click);
-            // 
-            // test02ToolStripMenuItem
-            // 
-            this.test02ToolStripMenuItem.Name = "test02ToolStripMenuItem";
-            this.test02ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.test02ToolStripMenuItem.Text = "Test 02";
-            this.test02ToolStripMenuItem.Click += new System.EventHandler(this.test02ToolStripMenuItem_Click);
-            // 
-            // tmrSAMUsage
-            // 
-            this.tmrSAMUsage.Enabled = true;
-            this.tmrSAMUsage.Interval = 300000;
-            this.tmrSAMUsage.Tick += new System.EventHandler(this.tmrSAMUsage_Tick);
-            // 
             // tssSAMProcesses
             // 
             this.tssSAMProcesses.Name = "tssSAMProcesses";
             this.tssSAMProcesses.Size = new System.Drawing.Size(0, 17);
             // 
-            // usageToolStripMenuItem
+            // timer1
             // 
-            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
-            this.usageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.usageToolStripMenuItem.Text = "&Usage";
-            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tmrSAMUsage
+            // 
+            this.tmrSAMUsage.Interval = 600000;
+            this.tmrSAMUsage.Tick += new System.EventHandler(this.tmrSAMUsage_Tick);
             // 
             // Main
             // 

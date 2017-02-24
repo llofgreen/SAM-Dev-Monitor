@@ -41,9 +41,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstSAMS.FormattingEnabled = true;
-            this.lstSAMS.Location = new System.Drawing.Point(12, 12);
+            this.lstSAMS.Location = new System.Drawing.Point(2, 0);
             this.lstSAMS.Name = "lstSAMS";
-            this.lstSAMS.Size = new System.Drawing.Size(292, 304);
+            this.lstSAMS.Size = new System.Drawing.Size(316, 319);
             this.lstSAMS.TabIndex = 0;
             // 
             // btSelectAll
@@ -70,7 +70,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.Location = new System.Drawing.Point(232, 358);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
@@ -81,7 +81,7 @@
             // 
             // btSave
             // 
-            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btSave.Location = new System.Drawing.Point(232, 329);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
